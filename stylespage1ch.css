@@ -1,0 +1,36 @@
+body {
+    background-color: #0d0d0d;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+.challenge-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.challenge-button, .back-button {
+    background-color: #003300;
+    color: #00ff00;
+    padding: 15px;
+    margin: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    width: 250px;
+    text-align: center;
+    display: inline-block;
+}
+
+.challenge-button:hover, .back-button:hover {
+    background-color: #005500;
+}

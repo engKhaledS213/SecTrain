@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض المناهج</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow-md text-center">
+        <h2 class="text-2xl font-bold mb-6">المناهج المتاحة</h2>
+        <div id="pdfGrid" class="grid grid-cols-2 md:grid-cols-3 gap-6"></div>
+    </div>
+
+    <script>
+        const pdfFiles = [
+            { image: "Operting System.webp", name: "نظم التشغيل", file: "مقدمة في نظم التشغيلIOS 101.pdf", quiz: "OSQuiz.html" },
+            { image: "Network.webp", name: "مبادئ الشبكات", file: "مقرر شبكات الحاسب.pdf" },
+            { image: "Digital crimes.jpeg", name: "الجرائم الرقمية", file: "الجرائم الرقمية.pdf" },
+            { image: "computer assembly.jpeg", name: "تجميع الحاسب الألي", file: "تجميع الحاسب و تشغيلة.pdf" },
+            { image: "Risk management.jpeg", name: "إدارة المخاطر السيبرانية", file: "إدارة المخاطرy.pdf" },
+            { image: "Cipher.webp", name: "مقدمة في التشفير", file: "التشفير.pdf" },
+            { image: "Risk management.jpeg", name: "الأدوات والبرامج المستخدمه", href: "hj.html" }
+        ];
+
+        const pdfGrid = document.getElementById("pdfGrid");
+
+        pdfFiles.forEach(file => {
+            let card = document.createElement("div");
+            card.className = "bg-gray-200 p-4 rounded-lg shadow-md text-center";
+            card.innerHTML = `
+                <img src="${file.image}" alt="${file.name}" class="w-full h-40 object-cover rounded-lg mb-3">
+                <h3 class="font-bold mb-2">${file.name}</h3>
+                <a href="${file.file}" target="_blank" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">دخول</a>
+                ${file.quiz ? `<a href="${file.quiz}" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 ml-2">اختبار نظم التشغيل</a>` : ""}
+            `;
+            pdfGrid.appendChild(card);
+        });
+    </script>
+</body>
+</html>
+

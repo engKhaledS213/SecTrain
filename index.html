@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة الاختبار</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #0f0;
+            text-align: center;
+            background: black;
+        }
+
+        /* فيديو الخلفية */
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .video-container video {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+        }
+
+        /* مربع المحتوى */
+        .content-box {
+            text-align: center;
+            position: relative;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            margin: 10% auto;
+            width: 60%;
+            border-radius: 10px;
+            border: 2px solid #0f0;
+            box-shadow: 0 0 20px #0f0;
+        }
+        .content-box img {
+            max-width: 100%; /* يجعل الصورة مرنة وتتناسب مع حجم الصفحة */
+            height: auto; /* يحافظ على نسبة العرض إلى الارتفاع */
+            margin-top:-290px;
+            margin-bottom: -290px; /* يضيف مسافة تحت الصورة */
+        }
+        .content-box h1, .content-box p {
+            margin: 10px 0; /* يقلل المسافات بين العناوين والفقرات */
+            font-weight: bold;
+        }
+
+        h1 {
+            margin: 10px 0;
+            color: #0f0;
+        }
+
+        p {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        /* تنسيق الأزرار */
+        :root {
+                --btn-color: #ffffff;
+                --glow-color: #00ff00;  /* لون النيون الأخضر */
+                --glow-spread-color: rgba(0, 255, 0, 0.5);
+                --bg-color: #000000;
+            }
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .buttons a {
+            display: inline-block;
+            padding: 15px 20px;
+            margin: 10px;
+            font-size: 18px;
+            color: #0f0;
+            background: black;
+            border: 2px solid #0f0;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .buttons a:hover {
+            background: #0f0;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- فيديو كخلفية -->
+    <div class="video-container">
+        <video autoplay loop muted>
+            <source src="3142.mp4" type="video/mp4">
+            المتصفح لا يدعم تشغيل الفيديو
+        </video>
+    </div>
+
+    <!-- مربع المحتوى -->
+    <div class="content-box">
+        <img src="LogoQW_withoutbakground.png" alt="معهد قوى الإنجاز العالي للتدريب">
+        <h1>مرحباً بكم في موقع التدريب العملي لدبلوم الأمن السيبراني</h1>
+        <p>إشراف: م. خالد الزيداني</p>
+        <p>⚠️ هذا الموقع تعليمي فقط، وليس للاستخدام الغير قانوني ⚠️</p>
+
+        <!-- الأزرار -->
+        <div class="buttons">
+            <a href="page1.html">قسم التحليل السيبراني</a>
+            <a href="page2.html">قسم التشفير</a>
+            <a href="curricula.html">قسم الموارد التعليمية</a>
+        </div>
+    </div>
+
+</body>
+</html>
+

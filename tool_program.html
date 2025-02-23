@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>البرامج والأدوات المستخدمة</title>
+    <style>
+        /* جعل الفيديو يغطي الخلفية بالكامل */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* تنسيق الصفحة */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+
+        /* المربع الأخضر في المنتصف */
+        .container {
+            background-color: rgba(37, 55, 45, 0.9); /* أخضر شفاف */
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .programs, .tools {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .program, .tool {
+            margin: 20px;
+            text-align: center;
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 10px;
+        }
+
+        .download-btn {
+            display: block;
+            margin-top: 10px;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .download-btn:hover {
+            background-color: #3a6143;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- خلفية الفيديو -->
+    <video class="video-background" autoplay loop muted>
+        <source src="3146.mp4" type="video/mp4">
+        متصفحك لا يدعم تشغيل الفيديو.
+    </video>
+
+    <div class="container">
+        <h1>البرامج والأدوات المستخدمة</h1>
+
+        <!-- البرامج -->
+        <div class="programs">
+            <div class="program">
+                <img src="Cisco-Packet-Tracer-Logo-1.png" alt="Packet Tracer">
+                <p>Packet Tracer</p>
+                <a href="https://www.netacad.com/courses/packet-tracer" class="download-btn" target="_blank">تحميل</a>
+            </div>
+            <div class="program">
+                <img src="Atopyse.jpg" alt="Atopyse">
+                <p>Atopyse</p>
+                <a href="https://example.com/Atopyse-download" class="download-btn" target="_blank">تحميل</a>
+            </div>
+            <div class="program">
+                <img src="Wireshar.jpg" alt="Wireshark">
+                <p>Wireshark</p>
+                <a href="https://www.wireshark.org/download.html" class="download-btn" target="_blank">تحميل</a>
+            </div>
+            <div class="program">
+                <img src="virtualbox-icon.avif" alt="Oracle VirtualBox">
+                <p>Oracle VirtualBox</p>
+                <a href="https://www.virtualbox.org/wiki/Downloads" class="download-btn" target="_blank">تحميل</a>
+            </div>
+            <div class="program">
+                <img src="Kali Linux.jpg" alt="Kali Linux">
+                <p>Kali Linux</p>
+                <a href="https://www.kali.org/get-kali/" class="download-btn" target="_blank">تحميل</a>
+            </div>
+        </div>
+
+        <!-- الأدوات -->
+        <div class="tools">
+            <div class="tool">
+                <img src="encryption.jpg" alt="GPG">
+                <p><strong>GPG للتشفير</strong></p>
+                <p>يستخدم لتشفير الملفات باستخدام مفاتيح التشفير.</p>
+                <p><code>gpg --symmetric file.txt</code></p>
+            </div>
+        
+            <div class="tool">
+                <img src="encryption2.jpg" alt="Strings">
+                <p><strong>Strings</strong></p>
+                <p>يستخدم لاستخراج النصوص من الملفات الثنائية.</p>
+                <p><code>strings file.bin</code></p>
+            </div>
+        
+            <div class="tool">
+                <img src="echo.webp" alt="Echo">
+                <p><strong>Echo</strong></p>
+                <p>يستخدم لطباعة النصوص أو حقن نص داخل ملف.</p>
+                <p><code>echo "Hello" > message.txt</code></p>
+            </div>
+        </div>
+        
+    </div>
+
+</body>
+</html>

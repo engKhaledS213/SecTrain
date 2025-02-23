@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قسم التحقيق الجنائي الرقمي</title>
+    <style>
+        body {
+            background-color: black;
+            color: #0f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        .images-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .image-box {
+            margin: 10px;
+            padding: 10px;
+            border: 2px solid #0f0;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .image-box img {
+            width: 200px;
+            height: 200px;
+            border-radius: 5px;
+        }
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .download-btn {
+            display: block;
+            margin-top: 10px;
+            padding: 10px;
+            background: #0f0;
+            color: black;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .download-btn:hover {
+            background: black;
+            color: #0f0;
+            border: 2px solid #0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>قسم التحقيق الجنائي الرقمي</h1>
+    <p>قم بتحميل الصور وتحليلها لاكتشاف أي بيانات مخفية!</p>
+
+    <div class="images-container">
+        <div class="image-box">
+            <img src="image2.jpg" alt="صورة 1">
+            <a href="image1.jpg" download class="download-btn">تحميل الصورة</a>
+        </div>
+        
+        <div class="image-box">
+            <img src="hidden_sky_image.png" alt="صورة 2">
+            <a href="hidden_sky_image.png" download class="download-btn">تحميل الصورة</a>
+        </div>
+
+        <div class="image-box">
+            <img src="image3.jpg" alt="صورة مشفرة">
+            <a href="hidden_text_image.png" download class="download-btn">تحميل الصورة</a>
+        </div>
+    </div>
+
+</body>
+</html>

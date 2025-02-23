@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylespage2.css">
+    <title>قسم التشفير</title>
+    <style>
+        body { background-color: black; color: lime; text-align: center; font-family: monospace; }
+        input, button { font-size: 18px; padding: 5px; }
+    </style>
+    
+    <script>
+        const challenges = [
+            { encrypted: "Wklv lv d whvw", decrypted: "This is a test" },
+            { encrypted: "Frqjudwxodwlrqv", decrypted: "Congratulations" },
+            { encrypted: "Fdhvdu flskhu lv ixq", decrypted: "Caesar cipher is fun" }
+        ];
+        
+        let challenge = challenges[Math.floor(Math.random() * challenges.length)];
+        
+        function checkAnswer() {
+            let userInput = document.getElementById("answer").value;
+            let result = document.getElementById("result");
+            
+            if (userInput.toLowerCase() === challenge.decrypted.toLowerCase()) {
+                result.innerHTML = "إجابة صحيحة ✅";
+                result.style.color = "lime";
+            } else {
+                result.innerHTML = "إجابة خاطئة ❌";
+                result.style.color = "red";
+            }
+        }
+        
+        window.onload = function() {
+            document.getElementById("encryptedText").innerText = challenge.encrypted;
+        };
+    </script>
+</head>
+<body>
+    <h1>قسم التشفير</h1>
+    <div class="video-container">
+        <video autoplay loop muted>
+            <source src="3145.mp4" type="video/mp4">
+            المتصفح لا يدعم تشغيل الفيديو
+        </video>
+ </div>   
+
+    <button onclick="location.href='caesar_cipher.html'">شفرة قيصر</button>
+    <button onclick="location.href='file_encryption.html'">تشفير الملفات بالخوارزميات</button>
+
+   
+    <h2>تحدي شفرة قيصر</h2>
+    <p>النص المشفر:</p>
+    <h2 id="encryptedText"></h2>
+    <p>أدخل النص المفكوك:</p>
+    <input type="text" id="answer">
+    <button onclick="checkAnswer()">تحقق</button>
+    <p id="result"></p>
+    
+</body>
+</html>

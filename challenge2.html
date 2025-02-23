@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Injection</title>
+    <link rel="stylesheet" href="stylespage1ch.css">
+</head>
+<body>
+    <h1>🛠 SQL Injection</h1>
+    <p>حاول تسجيل الدخول باستخدام حقن SQL!</p>
+    
+    <form id="loginForm">
+        <label for="username">اسم المستخدم:</label>
+        <input type="text" id="username" required>
+        <br>
+        <label for="password">كلمة المرور:</label>
+        <input type="password" id="password" required>
+        <br>
+        <button type="button" onclick="checkSQLInjection()">تسجيل الدخول</button>
+    </form>
+
+    <p id="message"></p>
+
+    <script>
+        function checkSQLInjection() {
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            let message = document.getElementById("message");
+
+            // فحص إذا أدخل المستخدم جملة SQL Injection مشهورة
+            if (username === "' OR '1'='1" && password === "' OR '1'='1") {
+                window.location.href = 'success.html';
+                message.innerHTML = "🎉 تهانينا! لقد نجحت في تنفيذ SQL Injection!";
+                message.style.color = "green";
+                
+            } else {
+                message.innerHTML = "❌ فشل! حاول مرة أخرى.";
+                message.style.color = "red";
+            }
+        }
+    </script>
+
+    <br>
+    <a href="index.html" class="back-button">🔙 العودة إلى القائمة</a>
+</body>
+</html>

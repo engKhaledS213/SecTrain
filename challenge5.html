@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحدي تحليل أنظمة الملفات</title>
+    <link rel="stylesheet" href="stylespage1ch.css">
+</head>
+<body>
+    <h2>🔍 تحدي تحليل أنظمة الملفات</h2>
+    <p>يمكنك تحميل السكريبت أو نسخه وتشغيله يدويًا.</p>
+
+    <!-- مربع عرض السكريبت -->
+    <textarea id="scriptBox" rows="15" cols="60" readonly>
+#!/bin/bash
+
+clear
+echo "🔍 تحليل نظام الملفات بدأ..."
+sleep 2
+
+echo -e "\\n📂 فحص الأقراص المتصلة..."
+sleep 1
+lsblk
+sleep 2
+
+echo -e "\\n📊 المساحة التخزينية لنظام الملفات..."
+sleep 1
+df -h
+sleep 2
+
+echo -e "\\n📜 عرض معلومات الملفات الهامة..."
+sleep 1
+find ~/challenges/ -type f -exec stat {} \\;
+sleep 3
+
+echo -e "\\n🧩 استرجاع الملفات المحذوفة من صورة NTFS..."
+sleep 1
+fls -r ~/challenges/ntfs_mft.img
+sleep 3
+
+echo -e "\\n🔎 استخراج ملف محذوف باستخدام icat..."
+sleep 1
+icat ~/challenges/ntfs_mft.img 5 > ~/challenges/recovered_file.txt
+echo "✅ الملف المستخرج: recovered_file.txt"
+sleep 2
+
+echo -e "\\n🚀 الفحص انتهى! البيانات تم استرجاعها بنجاح.\\n"
+    </textarea>
+
+    <br>
+
+    <!-- زر النسخ -->
+    <button onclick="copyScript()">📋 نسخ السكريبت</button>
+    <p id="copyMessage" style="color: green;"></p>
+
+    <!-- زر التحميل -->
+    <button onclick="downloadScript()">⬇️ تحميل السكريبت</button>
+
+    <script>
+        function copyScript() {
+            let scriptBox = document.getElementById("scriptBox");
+            scriptBox.select();
+            document.execCommand("copy");
+            document.getElementById("copyMessage").innerText = "✅ تم نسخ السكريبت!";
+        }
+
+        function downloadScript() {
+            let scriptContent = document.getElementById("scriptBox").value;
+            let blob = new Blob([scriptContent], { type: "text/plain" });
+            let a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "forensic_challenge.sh";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
+
+</body>
+</html>

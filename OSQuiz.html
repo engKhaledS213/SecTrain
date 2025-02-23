@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار نظم التشغيل</title>
+    <style>
+        body { background-color: black; color: lime; text-align: center; font-family: monospace; }
+        button { font-size: 18px; padding: 10px; margin: 10px; }
+    </style>
+    <script>
+        const questions = [
+            { q: "من فوائد البرمجة باستخدام مسالك التنفيذ:", options: ["التشارك في الموارد", "سرعة الاستجابة", "الاقتصاد", "جميع الإجابات صحيحة"], answer: "جميع الإجابات صحيحة" },
+            { q: "تجري في هذا النموذج مقابلة أكثر من مسلك على مستوى المستخدم، بمسلك واحد على مستوى النواة:", options: ["النموذج كثير إلى واحد", "النموذج واحد إلى واحد", "النموذج كثير إلى كثير", "جميع الإجابات خاطئة"], answer: "النموذج كثير إلى واحد" },
+            { q: "من موارد النظام:", options: ["عناوين الذاكرة", "أرقام طلبات المقاطعة", "قناة الوصول المباشر للذاكرة", "جميع الإجابات صحيحة"], answer: "جميع الإجابات صحيحة" },
+            { q: "BIOS:", options: ["ذاكرة موضوعة على اللوحة الأم مباشرة", "نظام ملفات", "نظام تطبيقات", "واجهة المستخدم"], answer: "ذاكرة موضوعة على اللوحة الأم مباشرة" },
+            { q: "واحد مما يلي يعتبر من المشاكل العامة للطابعة:", options: ["مشكلة في الطابعة", "مشكلة في كابل الطباعة", "مشكلة في التطبيق", "جميع الإجابات صحيحة"], answer: "جميع الإجابات صحيحة" },
+            { q: "يمكن أن تكون لواجهة المستخدم أحد الأشكال التالية:", options: ["واجهة القوائم", "واجهة الأيقونات", "واجهة الأوامر", "جميع الإجابات صحيحة"], answer: "جميع الإجابات صحيحة" },
+            { q: "يقدم نظام التشغيل:", options: ["واجهة المستخدم", "إدارة التطبيقات", "إدارة العتاد", "جميع الإجابات صحيحة"], answer: "جميع الإجابات صحيحة" },
+            { q: "تقسم استدعاءات النظام إلى:", options: ["إدارة الملفات", "الاتصالات", "صيانة المعلومات", "جميع الإجابات صحيحة"], answer: "جميع الإجابات صحيحة" },
+            { q: "لإدارة الإجرائيات، يمتلك نظام التشغيل الإمكانات التالية:", options: ["إنشاء إجرائيات النظام والمستخدم وحذفها.", "إيقاف تنفيذ الإجرائيات واستئناف تنفيذها.", "توفير آليات مزامنة الإجرائيات.", "جميع الإجابات صحيحة"], answer: "جميع الإجابات صحيحة" },
+            { q: "تحتاج الإجرائية لكي تنفذ مهمتها إلى موارد معينة:", options: ["زمن وحدة المعالجة", "الذاكرة", "الملفات", "جميع الإجابات صحيحة"], answer: "جميع الإجابات صحيحة" },
+            { q: "يوجد نوعان من عمليات الدخل/خرج: الدخل/خرج المتزامن وغير المتزامن:", options: ["صح", "خطأ"], answer: "صح" },
+            { q: "توفر الاقراص المغناطيسية معظم وحدات التخزين الثانوي لنظم الحواسيب:", options: ["صح", "خطأ"], answer: "صح" },
+            { q: "تعتبر الإجرائية كيانا فعالا بينما يعتبر البرنامج كيان غير فعال:", options: ["صح", "خطأ"], answer: "صح" },
+            { q: "يحتاج نظام التشغيل إلى حفظ معلومات معينة عن العتاد، أو عن التطبيقات في النظام:", options: ["صح", "خطأ"], answer: "صح" },
+            { q: "يتم الاتصال بين نظام التشغيل والعتاديات من خلال سواقات خاصة بالتجهيزات:", options: ["صح", "خطأ"], answer: "صح" },
+            { q: "يستطيع التطبيق أن يقوم بتحميل نفسه في الذاكرة من أجل التنفيذ:", options: ["صح", "خطأ"], answer: "صح" },
+            { q: "يحتاج توليد إجراء جديد إلى موارد كثيرة على عكس توليد مسلك تنفيذ جديد:", options: ["صح", "خطأ"], answer: "صح" },
+            { q: "يوجد حماية للمسالك او عزل فيما بينها على عكس الإجراءات:", options: ["صح", "خطأ"], answer: "خطأ" },
+            { q: "تتقاسم المسالك فيما بينها الفترة الزمنية المخصصة لتنفيذ الإجراء في المسالك على مستوى النواة:", options: ["صح", "خطأ"], answer: "خطأ" },
+            { q: "أهم فوائد مجمع مسالك التنفيذ: خدمة أسرع للطلبات من حالة مسلك تنفيذ واحد:", options: ["صح", "خطأ"], answer: "خطأ" },
+            { q: "ما هو الهدف الأساسي لنظام التشغيل؟", options: ["تحسين أداء المعالج", "إدارة موارد الحاسوب", "تسريع الإنترنت", "تحسين جودة الشاشة"], answer: "إدارة موارد الحاسوب" },
+            { q: "أي من التالي ليس نوعًا من أنظمة التشغيل؟", options: ["Windows", "Linux", "Python", "macOS"], answer: "Python" },
+            { q: "ما هو جزء نظام التشغيل الذي يتعامل مباشرة مع العتاد؟", options: ["Shell", "Kernel", "File System", "Compiler"], answer: "Kernel" },
+            { q: "أي نوع من أنظمة التشغيل يستخدم في الهواتف الذكية؟", options: ["RTOS", "Embedded OS", "Mobile OS", "Distributed OS"], answer: "Mobile OS" },
+            { q: "أي من التالية ليست وظيفة لنظام التشغيل؟", options: ["إدارة الذاكرة", "تشغيل التطبيقات", "تحليل البيانات الكبيرة", "إدارة العمليات"], answer: "تحليل البيانات الكبيرة" },
+            { q: "أي من أنظمة الجدولة التالية تعطي الأولوية للعمليات الأصغر وقت تنفيذ؟", options: ["FCFS", "SJF", "Round Robin", "Priority Scheduling"], answer: "SJF" },
+            { q: "ما هو الهدف من آلية التعددية البرمجية (Multitasking)؟", options: ["زيادة سرعة الإنترنت", "تشغيل برامج متعددة في وقت واحد", "منع استخدام أكثر من برنامج واحد", "تسريع أداء القرص الصلب"], answer: "تشغيل برامج متعددة في وقت واحد" },
+            { q: "أي من الحالات التالية تحدث عند امتلاء الذاكرة وعدم قدرة العمليات على العمل؟", options: ["Deadlock", "Thrashing", "Segmentation Fault", "Buffer Overflow"], answer: "Thrashing" },
+            { q: "ما هو نظام الملفات المستخدم في أنظمة Windows الحديثة؟", options: ["FAT32", "NTFS", "ext4", "HFS+"], answer: "NTFS" },
+            { q: "أي من أنظمة الجدولة التالية يستخدم وقت زمني محدد لكل عملية؟", options: ["FCFS", "Round Robin", "SJF", "Priority Scheduling"], answer: "Round Robin" },
+            { q: "ما هو المفهوم الذي يتيح لأكثر من عملية مشاركة المعالج في نفس الوقت؟", options: ["Virtualization", "Multithreading", "Caching", "Encryption"], answer: "Multithreading" },
+            { q: "ما هو الجزء الذي يتعامل مع إدارة العمليات في نظام التشغيل؟", options: ["File Manager", "Process Scheduler", "Memory Manager", "Device Manager"], answer: "Process Scheduler" },
+            { q: "أي من التالي ليس نوعًا من الذاكرة الافتراضية؟", options: ["Paging", "Segmentation", "Swapping", "Overclocking"], answer: "Overclocking" },
+            { q: "ما هي ميزة الذاكرة الافتراضية؟", options: ["تسريع المعالج", "زيادة سعة الذاكرة باستخدام القرص الصلب", "تحسين جودة الشاشة", "تحسين أداء البطارية"], answer: "زيادة سعة الذاكرة باستخدام القرص الصلب" },
+            { q: "ما هي أول عملية يتم تشغيلها عند تشغيل الحاسوب؟", options: ["BIOS", "Bootloader", "Kernel", "Shell"], answer: "BIOS" },
+            { q: "أي من التالي يستخدم لإدارة عمليات الإدخال والإخراج في نظام التشغيل؟", options: ["Device Drivers", "File System", "Scheduler", "Compiler"], answer: "Device Drivers" },
+            { q: "أي من التالية هي مشكلة قد تحدث عند الجدولة غير العادلة للعمليات؟", options: ["Starvation", "Thrashing", "Fragmentation", "Paging"], answer: "Starvation" },
+            { q: "ما هو الغرض من استخدام خوارزمية LRU في إدارة الذاكرة؟", options: ["تحديد العمليات التي تحتاج إلى المزيد من الموارد", "استبدال الصفحة الأقل استخدامًا مؤخرًا", "زيادة سرعة المعالج", "إدارة نظام الملفات"], answer: "استبدال الصفحة الأقل استخدامًا مؤخرًا" },
+            { q: "أي من تقنيات التزامن التالية تستخدم لمنع السباق على الموارد المشتركة؟", options: ["Virtual Memory", "Semaphore", "Multithreading", "Fragmentation"], answer: "Semaphore" },
+            { q: "ما هي فائدة Hypervisor في أنظمة التشغيل الافتراضية؟", options: ["تحسين أداء الألعاب", "إدارة الأنظمة الافتراضية وتشغيلها", "تحليل الفيروسات", "تسريع معالجة البيانات"], answer: "إدارة الأنظمة الافتراضية وتشغيلها" }
+        ];
+
+        function loadQuiz() {
+            let quizContainer = document.getElementById("quiz");
+            quizContainer.innerHTML = "";
+            questions.forEach((question, index) => {
+                let questionHTML = `<p>${index + 1}- ${question.q}</p>`;
+                question.options.forEach(option => {
+                    questionHTML += `<input type='radio' name='q${index}' value='${option}'> ${option}<br>`;
+                });
+                questionHTML += `<p id='result${index}'></p>`;
+                quizContainer.innerHTML += questionHTML + "<br>";
+            });
+            quizContainer.innerHTML += "<button onclick='checkAnswers()'>تحقق</button>";
+        }
+
+        function checkAnswers() {
+            let score = 0;
+            questions.forEach((question, index) => {
+                let selected = document.querySelector(`input[name='q${index}']:checked`);
+                let resultElement = document.getElementById(`result${index}`);
+                if (selected) {
+                    if (selected.value === question.answer) {
+                        score++;
+                        resultElement.innerHTML = "✅ إجابة صحيحة";
+                        resultElement.style.color = "lime";
+                    } else {
+                        resultElement.innerHTML = `❌ إجابة خاطئة، الإجابة الصحيحة: ${question.answer}`;
+                        resultElement.style.color = "red";
+                    }
+                } else {
+                    resultElement.innerHTML = "❌ لم يتم اختيار إجابة";
+                    resultElement.style.color = "red";
+                }
+            });
+            alert(`نتيجتك: ${score} من ${questions.length}`);
+        }
+
+        window.onload = loadQuiz;
+    </script>
+</head>
+<body>
+    <h1>اختبار نظم التشغيل</h1>
+    <div id="quiz"></div>
+</body>
+</html>
