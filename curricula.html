@@ -14,8 +14,9 @@
 
     <script>
        
-        const correctPassword = "4321";  
-     
+        const correctPassword = "1234";  // قم بتغييرها حسب الحاجة
+
+       
         const pdfFiles = [
             { image: "Operting System.webp", name: "نظم التشغيل", file: "مقدمة في نظم التشغيلIOS 101.pdf", quiz: "OSQuiz.html" },
             { image: "Network.webp", name: "مبادئ الشبكات", file: "مقرر شبكات الحاسب.pdf" },
@@ -34,15 +35,16 @@
             card.innerHTML = `
                 <img src="${file.image}" alt="${file.name}" class="w-full h-40 object-cover rounded-lg mb-3">
                 <h3 class="font-bold mb-2">${file.name}</h3>
-                ${file.file ? `<button onclick="requestPassword('${file.file}')" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">📂 دخول</button>` : ""}
-                ${file.quiz ? `<a href="${file.quiz}" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 ml-2">📝 اختبار</a>` : ""}
+                ${file.file ? `<button onclick="requestPassword('${file.file}')" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">دخول</button>` : ""}
+                ${file.quiz ? `<a href="${file.quiz}" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 ml-2">اختبار نظم التشغيل</a>` : ""}
+                ${file.href ? `<a href="${file.href}" class="bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700 mt-2 block">عرض الأدوات والبرامج</a>` : ""}
             `;
             pdfGrid.appendChild(card);
         });
 
-       
+     
         function requestPassword(pdfFile) {
-            const userInput = prompt("🔒 أدخل كلمة المرور لفتح الملف:");
+            const userInput = prompt("🚀 أدخل كلمة المرور لفتح الملف:");
             if (userInput === correctPassword) {
                 window.open(pdfFile, "_blank");
             } else {
