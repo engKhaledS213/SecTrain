@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عرض المناهج</title>
-
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 p-6">
@@ -14,6 +13,9 @@
     </div>
 
     <script>
+       
+        const correctPassword = "4321";  
+     
         const pdfFiles = [
             { image: "Operting System.webp", name: "نظم التشغيل", file: "مقدمة في نظم التشغيلIOS 101.pdf", quiz: "OSQuiz.html" },
             { image: "Network.webp", name: "مبادئ الشبكات", file: "مقرر شبكات الحاسب.pdf" },
@@ -21,7 +23,7 @@
             { image: "computer assembly.jpeg", name: "تجميع الحاسب الألي", file: "تجميع الحاسب و تشغيلة.pdf" },
             { image: "Risk management.jpeg", name: "إدارة المخاطر السيبرانية", file: "إدارة المخاطرy.pdf" },
             { image: "Cipher.webp", name: "مقدمة في التشفير", file: "التشفير.pdf" },
-            { image: "Risk management.jpeg", name: "الأدوات والبرامج المستخدمه", href: "tool_program" }
+            { image: "Risk management.jpeg", name: "الأدوات والبرامج المستخدمه", href: "tool_program.html" }
         ];
 
         const pdfGrid = document.getElementById("pdfGrid");
@@ -32,11 +34,21 @@
             card.innerHTML = `
                 <img src="${file.image}" alt="${file.name}" class="w-full h-40 object-cover rounded-lg mb-3">
                 <h3 class="font-bold mb-2">${file.name}</h3>
-                <a href="${file.file}" target="_blank" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">دخول</a>
-                ${file.quiz ? `<a href="${file.quiz}" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 ml-2">اختبار نظم التشغيل</a>` : ""}
+                ${file.file ? `<button onclick="requestPassword('${file.file}')" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">📂 دخول</button>` : ""}
+                ${file.quiz ? `<a href="${file.quiz}" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 ml-2">📝 اختبار</a>` : ""}
             `;
             pdfGrid.appendChild(card);
         });
+
+       
+        function requestPassword(pdfFile) {
+            const userInput = prompt("🔒 أدخل كلمة المرور لفتح الملف:");
+            if (userInput === correctPassword) {
+                window.open(pdfFile, "_blank");
+            } else {
+                alert("❌ كلمة المرور غير صحيحة!");
+            }
+        }
     </script>
 </body>
 </html>
