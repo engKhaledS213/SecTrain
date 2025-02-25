@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحدي أنظمة الملفات</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .question {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #systemInfo {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        pre {
+            background-color: #f8f8f8;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💻 تحدي: استكشاف أنظمة الملفات FAT32 و NTFS</h1>
+        
+        <!-- الأسئلة -->
+        <div id="quiz">
+            <!-- أسئلة متعددة -->
+            <div class="question">
+                <p>ما هو الحد الأقصى لحجم الملف في نظام FAT32؟</p>
+                <label><input type="radio" name="q1" value="4 جيجابايت"> 4 جيجابايت</label><br>
+                <label><input type="radio" name="q1" value="2 جيجابايت"> 2 جيجابايت</label><br>
+                <label><input type="radio" name="q1" value="1 جيجابايت"> 1 جيجابايت</label><br>
+                <label><input type="radio" name="q1" value="8 جيجابايت"> 8 جيجابايت</label><br>
+            </div>
+
+            <div class="question">
+                <p>أي من أنظمة الملفات التالية يدعم الأذونات (Permissions) على مستوى الملفات؟</p>
+                <label><input type="radio" name="q2" value="NTFS"> NTFS</label><br>
+                <label><input type="radio" name="q2" value="FAT32"> FAT32</label><br>
+                <label><input type="radio" name="q2" value="exFAT"> exFAT</label><br>
+                <label><input type="radio" name="q2" value="HFS+"> HFS+</label><br>
+            </div>
+
+            <div class="question">
+                <p>في نظام FAT32، إذا كان حجم الكتلة 4KB، كم من المساحة ستكون مهدرة عند تخزين ملف بحجم 3KB؟</p>
+                <label><input type="radio" name="q3" value="1KB"> 1KB</label><br>
+                <label><input type="radio" name="q3" value="0KB"> 0KB</label><br>
+                <label><input type="radio" name="q3" value="4KB"> 4KB</label><br>
+                <label><input type="radio" name="q3" value="3KB"> 3KB</label><br>
+            </div>
+
+            <div class="question">
+                <p>أي من أنظمة الملفات التالية يدعم التشفير التلقائي للملفات؟</p>
+                <label><input type="radio" name="q4" value="NTFS"> NTFS</label><br>
+                <label><input type="radio" name="q4" value="FAT32"> FAT32</label><br>
+                <label><input type="radio" name="q4" value="exFAT"> exFAT</label><br>
+                <label><input type="radio" name="q4" value="HFS+"> HFS+</label><br>
+            </div>
+
+            <div class="question">
+                <p>ما هي ميزة NTFS التي تجعلها أكثر أمانًا مقارنة بـ FAT32؟</p>
+                <label><input type="radio" name="q5" value="دعم التشفير"> دعم التشفير</label><br>
+                <label><input type="radio" name="q5" value="دعم ضغط الملفات"> دعم ضغط الملفات</label><br>
+                <label><input type="radio" name="q5" value="دعم الأذونات"> دعم الأذونات</label><br>
+                <label><input type="radio" name="q5" value="جميع ما ذكر"> جميع ما ذكر</label><br>
+            </div>
+
+            <div class="question">
+                <p>ما هو الحجم الأقصى للقرص الذي يمكن تهيئته باستخدام نظام FAT32؟</p>
+                <label><input type="radio" name="q6" value="16 جيجابايت"> 16 جيجابايت</label><br>
+                <label><input type="radio" name="q6" value="32 جيجابايت"> 32 جيجابايت</label><br>
+                <label><input type="radio" name="q6" value="2 تيرابايت"> 2 تيرابايت</label><br>
+                <label><input type="radio" name="q6" value="8 تيرابايت"> 8 تيرابايت</label><br>
+            </div>
+
+            <div class="question">
+                <p>أي من أنظمة الملفات التالية يدعم الاستعادة التلقائية في حالة حدوث أخطاء في النظام؟</p>
+                <label><input type="radio" name="q7" value="NTFS"> NTFS</label><br>
+                <label><input type="radio" name="q7" value="FAT32"> FAT32</label><br>
+                <label><input type="radio" name="q7" value="exFAT"> exFAT</label><br>
+                <label><input type="radio" name="q7" value="HFS+"> HFS+</label><br>
+            </div>
+
+            <!-- قسم النتائج -->
+            <button onclick="checkAnswers()">تحقق من الإجابات</button>
+
+            <div id="result"></div>
+        </div>
+        
+        <!-- قسم المعلومات العملية -->
+        <div id="systemInfo">
+            <h2>📂 المعلومات العملية:</h2>
+            <button onclick="getSystemInfo()">الحصول على معلومات النظام</button>
+            <pre id="infoOutput"></pre>
+        </div>
+    </div>
+
+    <script>
+        // التحقق من الإجابات
+        function checkAnswers() {
+            let score = 0;
+
+            // الأسئلة والإجابات الصحيحة
+            const answers = {
+                q1: "4 جيجابايت",
+                q2: "NTFS",
+                q3: "1KB",
+                q4: "NTFS",
+                q5: "جميع ما ذكر",
+                q6: "32 جيجابايت",
+                q7: "NTFS"
+            };
+
+            // التحقق من الإجابات
+            for (let i = 1; i <= 7; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selected && selected.value === answers[`q${i}`]) {
+                    score++;
+                }
+            }
+
+            // عرض النتيجة
+            const result = document.getElementById("result");
+            result.textContent = `لقد أجبت بشكل صحيح على ${score} من 7 أسئلة.`;
+        }
+
+        // الحصول على معلومات النظام
+        function getSystemInfo() {
+            let systemInfo = "";
+
+            // التحقق من البرنامج الثابت
+            const bootMode = window.location.protocol === "file:" ? "UEFI" : "BIOS"; // تحقق من UEFI أو BIOS
+            systemInfo += `البرنامج الثابت: ${bootMode}\n`;
+
+            // معلومات الأقراص (يمكنك تخصيص هذه البيانات حسب البيئة الفعلية)
+            const diskInfo = [
+                { device: "C:", fstype: "NTFS" },
+                { device: "D:", fstype: "FAT32" }
+            ];
+
+            systemInfo += "\nمعلومات الأقراص:\n";
+            diskInfo.forEach(disk => {
+                systemInfo += `الجهاز: ${disk.device}, نوع نظام الملفات: ${disk.fstype}\n`;
+            });
+
+            document.getElementById("infoOutput").textContent = systemInfo;
+        }
+    </script>
+</body>
+</html>
