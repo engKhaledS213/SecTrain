@@ -1,13 +1,13 @@
 
 
 .video-container {
-    width: 300px; /* تحديد العرض (مربع) */
-    height: 300px; /* تحديد الارتفاع (مربع) */
-    overflow: hidden; /* إخفاء أي جزء يتجاوز الحدود */
+    width: 300px; 
+    height: 300px; 
+    overflow: hidden; 
 }
 
 video {
-    width: 100%; /* جعل الفيديو يغطي العرض بالكامل */
-    height: 100%; /* جعل الفيديو يغطي الارتفاع بالكامل */
-    object-fit: cover; /* الحفاظ على التناسب مع قص الفيديو إن لزم الأمر */
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
 }
