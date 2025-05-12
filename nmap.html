@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>محاكي أوامر Nmap</title>
+  <style>
+    body {
+      font-family: monospace;
+      direction: rtl;
+      background-color: #0d1117;
+      color: #c9d1d9;
+      padding: 20px;
+    }
+    h1 {
+      color: #58a6ff;
+    }
+    .terminal {
+      background-color: #161b22;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,255,255,0.1);
+      margin-top: 20px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      background-color: #0d1117;
+      color: #58a6ff;
+      border: 1px solid #30363d;
+      border-radius: 5px;
+    }
+    .output {
+      margin-top: 15px;
+      background-color: #0d1117;
+      padding: 10px;
+      border-left: 4px solid #58a6ff;
+      white-space: pre-wrap;
+    }
+    .score {
+      margin-top: 10px;
+      color: #3fb950;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎯 محاكي أوامر Nmap - تدريب عملي</h1>
+  <p>اكتب الأمر في الحقل أدناه واضغط Enter. إذا كان صحيحًا، سيتم عرض نتيجة وهمية وتُحتسب لك نقطة.</p>
+
+  <div class="terminal">
+    <input type="text" id="commandInput" placeholder="nmap -sn 192.168.1.0/24" onkeydown="handleCommand(event)" autofocus />
+    <div class="output" id="output"></div>
+    <div class="score" id="score">النقاط: 0</div>
+  </div>
+
+  <script>
+    const commands = {
+      "nmap -sn 192.168.1.10/24": "Starting Nmap...\nHost 192.168.1.1 is up.\nHost 192.168.1.5 is up.\nHost 192.168.1.8 is up.\nNmap done.",
+      "nmap -sn 192.168.30.22/25": "Starting Nmap...\nHost 192.168.30.1 is up.\nHost 192.168.30.5 is up.\nHost 192.168.30.8 is up.\nNmap done.",
+      "nmap -sS 192.168.1.10": "PORT   STATE SERVICE\n22/tcp open  ssh\n80/tcp open  http\n443/tcp open  https",
+      "nmap -sS 192.168.30.22": "PORT   STATE SERVICE\n22/tcp open  ssh\n80/tcp open ",
+      "nmap -O 192.168.1.10": "Running OS detection...\nOS details: Linux 3.x\nNmap done.",
+      "nmap -O 192.168.1.10": "Running OS detection...\nOS details: Linux 3.x\nNmap done.",
+      "nmap -O 192.168.30.22": "Running OS detection...\nOS details: windows 10.1\nNmap done.",
+      "nmap -sV 192.168.1.10": "PORT   STATE SERVICE VERSION\n22/tcp open  ssh     OpenSSH 7.2\n80/tcp open  http    Apache 2.4.18",
+      "nmap -sV 192.168.30.22": "PORT   STATE SERVICE VERSION\n22/tcp open  ssh     OpenSSH 7.2\n80/tcp open  http    Apache 2.4.18",
+      "nmap -A 192.168.1.10": "Aggressive scan results:\nOS: Linux\nPorts: 22/ssh, 80/http\nServices: Apache, SSH\nTraceroute: 3 hops",
+      "nmap -A 192.168.30.22": "Aggressive scan results:\nOS: Linux\nPorts: 22/ssh, 80/http\nServices: Apache, SSH\nTraceroute: 3 hops",
+      "nmap scanme.nmap.org": "PORT   STATE SERVICE\n22/tcp open  ssh\n80/tcp open  http\nNmap done: 1 IP address (1 host up)",
+      "nmap https://engkhaleds213.github.io/SecTrain/": "PORT   STATE SERVICE\n22/tcp open  ssh\n80/tcp open  FTP\nNmap done: 1 IP address (1 host up)",
+      "nmap -p- 192.168.1.10": "Scanning all ports...\nDiscovered open ports: 21, 22, 80, 443, 8080",
+      "nmap -p- 192.168.30.22": "Scanning all ports...\nDiscovered open ports: 21, 22, 80, 443, 8080",
+      "nmap -sU 192.168.1.10": "UDP Scan Results:\n53/udp open  domain\n161/udp open  snmp",
+      "nmap -sU 192.168.30.22": "UDP Scan Results:\n53/udp open  domain\n161/udp open  snmp",
+      "nmap -T4 -sS 192.168.1.10": "Faster scan completed.\nOpen ports: 22, 80, 443",
+      "nmap -sS 192.168.1.10 -oN result.txt": "Scan saved to result.txt\nOpen ports: 22, 80"
+    };
+
+    let score = 0;
+
+    function handleCommand(e) {
+      if (e.key === "Enter") {
+        const input = document.getElementById("commandInput");
+        const output = document.getElementById("output");
+        const scoreDisplay = document.getElementById("score");
+        const cmd = input.value.trim();
+
+        if (commands[cmd]) {
+          output.textContent = commands[cmd];
+          score++;
+          scoreDisplay.textContent = "النقاط: " + score;
+        } else {
+          output.textContent = "❌ أمر غير معروف أو غير صحيح. حاول مرة أخرى.";
+        }
+
+        input.value = "";
+      }
+    }
+  </script>
+</body>
+</html>
